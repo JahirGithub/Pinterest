@@ -269,7 +269,7 @@ function Header(props) {
               <ImageListItem key={item.img_path}>
                 <img
                   src={`${item.img_path}?w=248&fit=crop&auto=format`}
-                  srcSet={`${item.img_path}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                  // srcSet={`${item.img_path}?w=248&fit=crop&auto=format&dpr=2 2x`}
                   alt={item.title}
                   loading="lazy"
                 />
