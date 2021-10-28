@@ -8,7 +8,7 @@ function DisplayAll() {
 
   //Similar to componentDidMount and componentDidUpdate
   useEffect(() => {
-    axios.get('http://localhost:4500/admin/viewalluser')
+    axios.get('https://pinterestbackendgmit.herokuapp.com/admin/viewalluser')
       .then(response => {
         console.log(response.data)
         setEmpList(response.data);

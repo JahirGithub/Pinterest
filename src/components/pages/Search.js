@@ -20,7 +20,7 @@ function Search() {
   const handleSubmit = (evt) => {
     evt.preventDefault();
 
-    axios.get('http://localhost:4500/admin/search/' + eemail)
+    axios.get('https://pinterestbackendgmit.herokuapp.com/admin/search/' + eemail)
       .then(res => {
         console.log(res.data)
         setEmpList(res.data)

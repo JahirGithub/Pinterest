@@ -13,7 +13,7 @@ function UserViewImages() {
     let uid = sessionStorage.getItem('uid')
     // console.log(uid);
     useEffect(() => {
-        axios.get('http://localhost:4500/user/viewall' + uid)
+        axios.get('https://pinterestbackendgmit.herokuapp.com/user/viewall' + uid)
             .then(response => {
                 setImgList(response.data);
             })
@@ -50,7 +50,7 @@ function UserViewImages() {
     function removeRow(index){
         var templist = [...imglist];
         let remove = templist.splice(index,1);
-        axios.delete('http://localhost:4500/user/remove/'+remove[0]._id)
+        axios.delete('https://pinterestbackendgmit.herokuapp.com/user/remove/'+remove[0]._id)
         .then(res=>{
             console.log(res.data)
             setMsg("Image Deleted Succesfully.");

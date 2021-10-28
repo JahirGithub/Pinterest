@@ -52,9 +52,7 @@ function UserReg() {
 
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        // console.log(`Form submitted:`);
-        // console.log(`NAME: ${uname}`);
-        // console.log(`EMAIL: ${uemail}`);
+    
 
         const userinfo = {
             uname: uname,
@@ -66,7 +64,7 @@ function UserReg() {
             upass: upass,
         }
 
-        axios.post('http://localhost:4500/user/register', userinfo)
+        axios.post('https://pinterestbackendgmit.herokuapp.com/user/register', userinfo)
             .then(res => {
                 console.log(res.data)
                 // setMessage('REGISTRATION SUCCESSFUL')

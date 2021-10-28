@@ -10,7 +10,7 @@ function ViewAllUserImagesAdmin() {
     const [msg, setMessage] = useState("");
     
     useEffect(() => {
-        axios.get('http://localhost:4500/admin/ViewallUserImg')
+        axios.get('https://pinterestbackendgmit.herokuapp.com/admin/ViewallUserImg')
           .then(response => {
             console.log(response.data)
             setImgList(response.data);
@@ -46,7 +46,7 @@ function ViewAllUserImagesAdmin() {
         let re = templist.splice(index,1);
          console.log("hello")
          console.log(templist)
-        axios.delete('http://localhost:4500/user/remove/'+re[0]._id)
+        axios.delete('https://pinterestbackendgmit.herokuapp.com/user/remove/'+re[0]._id)
         .then(res=>{
             console.log(res.data)
             setMessage("Image Deleted Succesfully.");

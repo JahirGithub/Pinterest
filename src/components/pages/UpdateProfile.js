@@ -23,7 +23,7 @@ function UpdateProf() {
     const [msg, setMessage] = useState("");
 
     useEffect(() => {
-        axios.get('http://localhost:4500/user/update/' + uid)
+        axios.get('https://pinterestbackendgmit.herokuapp.com/user/update/' + uid)
             .then(response => {
                 setUserName(response.data[0].name);
                 setUserEmail(response.data[0].email);
@@ -82,7 +82,7 @@ function UpdateProf() {
                 upass: upass,
             }
 
-            axios.post('http://localhost:4500/user/update', userinfo)
+            axios.post('https://pinterestbackendgmit.herokuapp.com/user/update', userinfo)
                 .then(res => {
                     console.log(res.data)
                     setMessage('PROFILE UPDATED SUCCESSFUL')

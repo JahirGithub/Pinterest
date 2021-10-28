@@ -10,7 +10,7 @@ function ContactAll() {
 
   //Similar to componentDidMount and componentDidUpdate
   useEffect(() => {
-    axios.get('http://localhost:4500/admin/allquery')
+    axios.get('https://pinterestbackendgmit.herokuapp.com/admin/allquery')
       .then(response => {
         console.log(response.data)
         setEmpList(response.data);

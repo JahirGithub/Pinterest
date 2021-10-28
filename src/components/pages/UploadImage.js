@@ -79,7 +79,7 @@ function UploadImage() {
                 authoremail: authuser,
             }
 
-            axios.post('http://localhost:4500/user/upload', images)
+            axios.post('https://pinterestbackendgmit.herokuapp.com/user/upload', images)
                 .then(res => {
                     console.log(res.data);
                     setMessage("Image Added Successfully!!");

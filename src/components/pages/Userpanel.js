@@ -13,7 +13,7 @@ function Userpanel() {
 
   useEffect(() => {
     // 192.168.31.192
-    axios.get('http://localhost:4500/user/ViewallUserImg/')
+    axios.get('https://pinterestbackendgmit.herokuapp.com/user/ViewallUserImg/')
       .then(response => {
         setItemImgsList(response.data);
       })

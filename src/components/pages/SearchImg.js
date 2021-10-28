@@ -22,7 +22,7 @@ function NavSearch(props) {
     const handleSubmit = (evt) => {
         evt.preventDefault();
         console.log(catagory)
-        axios.get('http://localhost:4500/user/searchimg/' + catagory)
+        axios.get('https://pinterestbackendgmit.herokuapp.com/user/searchimg/' + catagory)
             .then(res => {
                 setImgList(res.data)
                 // setMessage("Search results for "+catagory)

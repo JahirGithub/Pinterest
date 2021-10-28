@@ -20,7 +20,7 @@ function Delete() {
     //console.log(`Form submitted:`);
     //console.log(`EMAIL ID: ${eemail}`);
 
-    axios.delete('http://localhost:4500/admin/remove/' + eemail)
+    axios.delete('https://pinterestbackendgmit.herokuapp.com/admin/remove/' + eemail)
       .then(res => {
         console.log(res.data)
         setMessage('USER SUCCESSFULLY DELETED')

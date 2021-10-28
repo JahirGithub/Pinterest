@@ -26,7 +26,7 @@ function UserLogin(props) {
             password: password,
         }
 
-        axios.post('http://localhost:4500/user/login', cred)
+        axios.post('https://pinterestbackendgmit.herokuapp.com/user/login', cred)
             .then(res => {
                 console.log(res);
                 if (password === res.data[0].password) {

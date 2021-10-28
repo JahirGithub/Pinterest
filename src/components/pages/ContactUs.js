@@ -31,7 +31,7 @@ function ContactUs() {
             vcomment: vcomment,
         }
 
-        axios.post('http://localhost:4500/user/contactUs', userinfo)
+        axios.post('https://pinterestbackendgmit.herokuapp.com/user/contactUs', userinfo)
             .then(res => {
                 // console.log(res.data)
                 setMessage('Your query is submited! Thank You😊');
