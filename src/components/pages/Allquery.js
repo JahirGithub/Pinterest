@@ -53,7 +53,7 @@ function ContactAll() {
       <br />
       <h3 align="center">ALL USER DETAILS</h3>
         <Container style={{overflowX:'auto'}}>
-        <Table striped bordered hover variant="dark">
+        <Table striped bordered hover variant="info">
   <thead>
     <tr>
       <th>Name</th>
