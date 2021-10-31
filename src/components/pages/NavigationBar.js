@@ -12,7 +12,7 @@ function MyNavbar() {
     if (admin) {
         return (
             <>
-                <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
+                <Navbar collapseOnSelect expand="lg" style={{backgroundColor:'#33acd3'}} variant="light">
                     <Navbar.Brand as={Link} to="/adminafterlogin">GMIT</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -40,7 +40,7 @@ function MyNavbar() {
     else if (authuser) {
         return (
             <>
-                <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
+                <Navbar collapseOnSelect expand="lg" style={{backgroundColor:'#33acd3'}} variant="light">
                     <Navbar.Brand as={Link} to="/userpanel">GMIT</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -65,7 +65,7 @@ function MyNavbar() {
     else {
         return (
             <>
-                <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
+                <Navbar collapseOnSelect expand="lg" style={{backgroundColor:'#33acd3'}} variant="light">
                     <Navbar.Brand as={Link} to="/">GMIT</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
@@ -82,7 +82,6 @@ function MyNavbar() {
                                 </NavDropdown>
                             </Nav>
                             <Nav.Link as={Link} to="/contactus">Contact Us</Nav.Link>
-                            <Nav.Link as={Link} to="/aboutus">About Us</Nav.Link>
                         </Nav>
 
                     </Navbar.Collapse>

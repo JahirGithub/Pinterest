@@ -6,57 +6,57 @@ import Table from 'react-bootstrap/Table';
 function DisplayAll() {
   const [emplist, setEmpList] = useState([]);
 
-  //Similar to componentDidMount and componentDidUpdate
+ 
   useEffect(() => {
     axios.get('https://pinterestbackendgmit.herokuapp.com/admin/viewalluser')
-      .then(response => {
-        console.log(response.data)
-        setEmpList(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }, [])
+    .then(response => {
+      console.log(response.data)
+      setEmpList(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}, [])
 
-  function viewUsers() {
-    return emplist.map((currentrow, index) => {
-      return (
-        <tr key={index}>
-          <td>{currentrow.name}</td>
-          <td>{currentrow.email}</td>
-          <td>{currentrow.mobile}</td>
-          <td>{currentrow.dob}</td>
-          <td>{currentrow.gender}</td>
+function viewUsers() {
+  return emplist.map((currentrow, index) => {
+    return (
+      <tr key={index}>
+        <td>{currentrow.name}</td>
+        <td>{currentrow.email}</td>
+        <td>{currentrow.mobile}</td>
+        <td>{currentrow.dob}</td>
+        <td>{currentrow.gender}</td>
+      </tr>
+    );
+  });
+}
+
+return (
+  <div>
+    <NavigationBar />
+    <br /><br />
+    <center><h3 style={{width:'50%'}}>ALL USER DETAILS</h3></center>
+    <br /><br />
+    <Container style={{overflowX:'auto'}}>
+      <Table striped bordered hover variant="info">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Mobile</th>
+          <th>DOB</th>
+          <th>Gender</th>
         </tr>
-      );
-    });
-  }
+      </thead>
 
-  return (
-    <div>
-      <NavigationBar />
-      <br /><br />
-      <h3 style={{width:'50%',marginLeft:'400px'}}>ALL USER DETAILS</h3>
-      <br /><br />
-      <Container style={{overflowX:'auto'}}>
-        <Table striped bordered hover variant="info">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Mobile</th>
-            <th>DOB</th>
-            <th>Gender</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {viewUsers()}
-        </tbody>
-      </Table>
-      </Container>
-    </div>
-  )
+      <tbody>
+        {viewUsers()}
+      </tbody>
+    </Table>
+    </Container>
+  </div>
+)
 }
 
 

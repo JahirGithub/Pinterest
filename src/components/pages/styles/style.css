@@ -1,11 +1,8 @@
 .login-form {
-  width: 450px;
+  max-width: 450px;
   margin: auto;
-
-  /* background-color: black;*/
   color: whitesmoke;
-
-  background-image: url("../img/bg2.png");
+  background-image: url("../img/bg.png");
 
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
   padding: 40px 55px 45px 55px;
@@ -14,23 +11,18 @@
 }
 
 .div-bg {
-  /* background: #f79d00;  
-    background: -webkit-linear-gradient(to right, #64f38c, #f79d00);  
-    background: linear-gradient(to right, #64f38c, #f79d00);
-     */
-/* 
-  background: #ff4b1f; 
-  background: -webkit-linear-gradient(to right, #1fddff, #ff4b1f);
-  background: linear-gradient(to right, #1fddff, #ff4b1f); */
-
-  background: #2BC0E4;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #EAECC6, #2BC0E4);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #EAECC6, #2BC0E4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+  background: -webkit-linear-gradient(to right, #EAECC6, #2BC0E4);  
+  background: linear-gradient(to right, #EAECC6, #2BC0E4); 
   
 }
-.divHome-bg {
+.Home-bg {
   background-color: #ffe4e1;
   color: black;
+}
+
+.uimg{
+  border-radius: 20px;
 }
 
 .form-control:focus {

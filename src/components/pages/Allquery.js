@@ -8,7 +8,6 @@ import { Container } from 'react-bootstrap';
 function ContactAll() {
   const [emplist, setEmpList] = useState([]);
 
-  //Similar to componentDidMount and componentDidUpdate
   useEffect(() => {
     axios.get('https://pinterestbackendgmit.herokuapp.com/admin/allquery')
       .then(response => {
@@ -28,14 +27,14 @@ function ContactAll() {
           <td>{currentrow.vemail}</td>
           <td>{currentrow.vmobile}</td>
           <td>{currentrow.vcomment}</td>
-          &nbsp;
+          &nbsp;&nbsp;
           <button className="btn btn-success" onClick={() => {
               window.open(`tel: ${currentrow.vmobile}`);
           }}
           >
               <i className="fa fa-phone" aria-hidden="true"></i>
           </button>
-          &nbsp;
+          &nbsp;&nbsp;
           <button className="btn btn-primary text-light" onClick={() => {
               window.open(`mailto: ${currentrow.vemail}`);
           }}

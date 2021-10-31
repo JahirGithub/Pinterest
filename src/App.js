@@ -19,7 +19,7 @@ import ViewAllUserImagesAdmin from './components/pages/ViewAllUserImg';
 import NavSearch from './components/pages/SearchImg';
 import ContactUs from './components/pages/ContactUs';
 import Allquery from './components/pages/Allquery';
-import AboutUs from './components/pages/AboutUs';
+
 
 function App() {
   return (
@@ -41,7 +41,6 @@ function App() {
           <Route path="/uploadimage" component={UploadImage} />
           <Route path="/search" component={Search} />
           <Route path="/allquery" component={Allquery} />
-          <Route path="/aboutus" component={AboutUs} />
           <Route path="/viewimage" component={ViewImage} />
           <Route path="/logout" component={Logout} />
       </Switch>

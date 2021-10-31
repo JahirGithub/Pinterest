@@ -6,7 +6,7 @@ import NavigationBar from './NavigationBar';
 import { Col, Container, Row } from 'react-bootstrap';
 import img from "./img/test02.png";
 
-function UserReg() {
+function UserRegistration() {
 
     const [uname, setUserName] = useState("");
     const [uemail, setUserEmail] = useState("");
@@ -50,10 +50,9 @@ function UserReg() {
             })
     }
 
+   
     const handleSubmit = (evt) => {
         evt.preventDefault();
-    
-
         const userinfo = {
             uname: uname,
             uemail: uemail,
@@ -64,7 +63,7 @@ function UserReg() {
             upass: upass,
         }
 
-        axios.post('https://pinterestbackendgmit.herokuapp.com/user/register', userinfo)
+        axios.post('http://localhost:4500/user/register', userinfo)
             .then(res => {
                 console.log(res.data)
                 // setMessage('REGISTRATION SUCCESSFUL')
@@ -96,7 +95,7 @@ function UserReg() {
                                     <h3>Register Here</h3>
                                     <h4>You are most welcome as a new user !</h4>
                                 </center>
-                                <img src={img} alt="No img" />
+                                <img className="img-fluid" src={img} alt="No img" />
 
                             </div>
                         </Col>
@@ -154,12 +153,12 @@ function UserReg() {
                         </Col>
                     </Row>
                 </Container>
-                <br /><br />
+                <br /><br /><br />
                 
             </div>
         </>
     );
 }
-export default UserReg;
+export default UserRegistration;
 
 

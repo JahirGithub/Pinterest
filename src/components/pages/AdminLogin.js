@@ -6,7 +6,7 @@ import img from "./img/test02.png";
 
 
 
-function AdminLoginHooks(props) {
+function AdminLogin(props) {
   const [adminuserid, setAdminUserId] = useState("");
   const [adminpassword, setAdminPassword] = useState("");;
   const [msg, setMessage] = useState("");;
@@ -48,7 +48,7 @@ function AdminLoginHooks(props) {
                 <h3>Login Here</h3>
                 <h4>You are most welcome Admin !</h4>
               </center>
-              <img src={img} alt="No img" />
+              <img className="img-fluid" src={img} alt="No img" />
 
             </div>
           </Col>
@@ -70,9 +70,9 @@ function AdminLoginHooks(props) {
           </Col>
         </Row>
       </Container>
-      <br />
+      <br /><br /><br /><br />
     </div>
 
   );
 }
-export default AdminLoginHooks
+export default AdminLogin

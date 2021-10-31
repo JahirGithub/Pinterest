@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-// import { Redirect } from "react-router-dom";
 import axios from 'axios';
 import './styles/style.css';
 import Table from 'react-bootstrap/Table';
+import Container from 'react-bootstrap/Container';
 import NavigationBar from './NavigationBar';
 
 
@@ -11,7 +11,6 @@ function UserViewImages() {
     const [msg, setMsg] = useState("");
 
     let uid = sessionStorage.getItem('uid')
-    // console.log(uid);
     useEffect(() => {
         axios.get('https://pinterestbackendgmit.herokuapp.com/user/viewall' + uid)
             .then(response => {
@@ -39,8 +38,7 @@ function UserViewImages() {
                     <td>{currentrow.catagory} </td>
                     <td width={500}>{currentrow.descrip} </td>
                     <td><img src={currentrow.img_path} width={250} alt="..." /> </td>
-                    {/* <td>{currentrow.status}</td> */}
-                    <td>{currentrow.createdAt} </td>
+                    <td>{new Date(Date.parse(currentrow.createdAt)).toLocaleString()}</td>
                     <td><button onClick={()=>removeRow(index)} className="btn btn-danger" >Delete</button> </td>
                 </tr>
             )
@@ -66,9 +64,11 @@ function UserViewImages() {
         <>
             <NavigationBar />
             <br /><br />
-            <h3>All Uploaded Images</h3>
-            {msg}
-            <Table striped bordered hover varient='primary'>
+            <center><h3>ALL UPLOADED IMAGES DETAILS</h3></center>
+        <br/>
+        
+        <Container style={{overflowX:'auto'}}>
+        <Table  striped bordered hover variant="info">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -77,6 +77,7 @@ function UserViewImages() {
                         <th>Description</th>
                         <th>Img Path</th>
                         <th>Time of Upload</th>
+                        <th>Delete Image</th>
                     </tr>
                 </thead>
 
@@ -84,9 +85,9 @@ function UserViewImages() {
                     {viewImages()}
                 </tbody>
             </Table>
+            </Container>
             <br /><br />
         </>
     )
 }
 export default UserViewImages;
-

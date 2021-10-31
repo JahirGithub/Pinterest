@@ -31,11 +31,11 @@ function ViewAllUserImagesAdmin() {
               <td><img src={currentrow.img_path} width={250} alt=""/></td>
               <td>{currentrow.descrip}</td>
               <td>{currentrow.authorid}</td>
+              <td>{new Date(Date.parse(currentrow.createdAt)).toLocaleString()}</td>
               <td><button onClick={() => removeRow(index)} className="btn btn-danger">Delete</button></td>
             </tr>
             
           );
-          // console.log(currentrow.authorname);
         });
       }
 
@@ -48,49 +48,50 @@ function ViewAllUserImagesAdmin() {
          console.log(templist)
         axios.delete('https://pinterestbackendgmit.herokuapp.com/user/remove/'+re[0]._id)
         .then(res=>{
-            console.log(res.data)
-            setMessage("Image Deleted Succesfully.");
-            setImgList(templist)
-        })
-        .catch(err=>{
-            console.log(err)
-            setMessage('INVALID Image ID');
-        })
-    }
-    
-    let admin = sessionStorage.getItem('admin')
-    if (admin == null) {
-      return (<Redirect to="/adminlogin" />)
-    }
-    return (
-        <div>
-        <NavigationBar />
-        <br /><br />
-        <h3 style={{ color: "red" }}>{msg}</h3><br />
-        <h3>ALL USER UPLOADED IMAGES DETAILS</h3>
-        <br/>
-        
-        <Container style={{overflowX:'auto'}}>
-        <Table striped bordered hover variant="info">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>CATAGORY</th>
-              <th>IMAGE PATH</th>
-              <th>DESCRIPTION</th>
-              <th>ID</th>
-              <th>Delete User Image</th>
-            </tr>
-          </thead>
-  
-          <tbody>
-            {viewImgList()}
-          </tbody>
-          </Table>
-          </Container>
-      </div>
-    )
+          console.log(res.data)
+          setMessage("Image Deleted Succesfully.");
+          setImgList(templist)
+      })
+      .catch(err=>{
+          console.log(err)
+          setMessage('INVALID Image ID');
+      })
   }
+  
+  let admin = sessionStorage.getItem('admin')
+  if (admin == null) {
+    return (<Redirect to="/adminlogin" />)
+  }
+  return (
+      <div >
+      <NavigationBar />
+      <br /><br />
+      <h3 style={{ color: "red" }}>{msg}</h3><br />
+      <center><h3>ALL USER UPLOADED IMAGES DETAILS</h3></center>
+      <br/>
+      
+      <Container style={{overflowX:'auto'}}>
+      <Table  striped bordered hover variant="info">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>CATAGORY</th>
+            <th>IMAGE PATH</th>
+            <th>DESCRIPTION</th>
+            <th>ID</th>
+            <th>Time of Upload</th>
+            <th>Delete Image</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {viewImgList()}
+        </tbody>
+        </Table>
+        </Container>
+    </div>
+  )
+}
 
 export default ViewAllUserImagesAdmin

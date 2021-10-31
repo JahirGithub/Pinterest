@@ -11,54 +11,70 @@ import ImageListItemBar from '@mui/material/ImageListItemBar';
 function AdminAfterLogin() {
 
 
+  const [windowSize, setWindowSize] = useState(window.innerWidth);
+
+  const handleSize = () => {
+    const size = window.innerWidth;
+    setWindowSize(size);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleSize);
+  }, []);
+
+
   const [itemImgslist, setItemImgsList] = useState([]);
 
   useEffect(() => {
-    // 192.168.31.192
     axios.get('https://pinterestbackendgmit.herokuapp.com/user/ViewallUserImg/')
-      .then(response => {
-        setItemImgsList(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }, [])
+    .then(response => {
+      setItemImgsList(response.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+}, [])
 
 
 
-  let admin = sessionStorage.getItem('admin')
-  console.log(admin)
-  if (admin == null) {
-    return (<Redirect to="/adminlogin" />)
-  }
-  else {
-    return (
-      <div>
-        <NavigationBar />
-        <br /><br />
-        <h3>WELCOME ADMIN</h3><br /><br />
-        <div className='divHome-bg'>
-          <Box>
-            <ImageList variant="masonry" cols={4} gap={12}>
+let admin = sessionStorage.getItem('admin')
+if (admin == null) {
+  return (<Redirect to="/adminlogin" />)
+}
+else {
+  return (
+    <div>
+      <NavigationBar />
+      <br /><br />
+      <h3>WELCOME ADMIN</h3><br /><br />
+      <div className='Home-bg'>
+
+        <center>
+          <Box sx={{ overflowY: 'scroll' }}>
+            <ImageList className='img-col' variant="masonry" cols={windowSize > 1200 ? 5 : windowSize > 910 ? 3 : windowSize > 760 ? 3 : windowSize > 570 ? 2 : 1} gap={12}>
               {itemImgslist.map((item) => (
                 <ImageListItem key={item.img_path}>
-                  <img
+                  <img className='uimg'
                     src={`${item.img_path}?w=248&fit=crop&auto=format`}
-                    // srcSet={`${item.img_path}?w=248&fit=crop&auto=format&dpr=2 -2x`}
                     alt={item.title}
                     loading="lazy"
                   />
-                  <ImageListItemBar position="below" title={<span>By: @{item.authorname}</span>} />
-                  <ImageListItemBar position="below" title={<span>catagory : {item.catagory}</span>} />
-                  <ImageListItemBar position="below" title={<span>Uploaded at : {item.createdAt}</span>} />
+                  <center>
+                    <div>
+                      <ImageListItemBar position="below" title={<span>By: @{item.authorname}</span>} />
+                      <ImageListItemBar position="below" title={<span>catagory : {item.catagory}</span>} />
+                      <ImageListItemBar position="below" title={<span>Uploaded at : {new Date(Date.parse(item.createdAt)).toLocaleString()}</span>} />
+                    </div>
+                  </center>
                 </ImageListItem>
               ))}
             </ImageList>
           </Box>
-        </div>
+        </center>
       </div>
-    )
-  }
+    </div>
+  )
+}
 }
 
 export default AdminAfterLogin

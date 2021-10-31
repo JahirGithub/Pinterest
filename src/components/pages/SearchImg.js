@@ -7,16 +7,16 @@ import NavigationBar from './NavigationBar';
 
 
 
-function NavSearch(props) {
+function ImgSearch(props) {
 
     const [Imglist, setImgList] = useState([]);
     const [catagory, setcatagory] = useState("");
     const [msg, setMessage] = useState("");
-    // const [result, setResult] = useState([]);
+
 
     const onChangeCat = (e) => {
         setcatagory(e.target.value);
-        setMessage(''); //REMOVE ERROE MSG
+        setMessage('');
     }
 
     const handleSubmit = (evt) => {
@@ -25,7 +25,7 @@ function NavSearch(props) {
         axios.get('https://pinterestbackendgmit.herokuapp.com/user/searchimg/' + catagory)
             .then(res => {
                 setImgList(res.data)
-                // setMessage("Search results for "+catagory)
+
             })
             .catch(err => {
                 setMessage("No Images found on this catagory")
@@ -71,9 +71,6 @@ function NavSearch(props) {
                             <br />
                             <h3 >Search Images</h3>
                             <form className='login-form' onSubmit={handleSubmit}>
-
-                                {/* <input type="search" id="form1" placeholder="Enter Image Catagory" value={catagory}
-                        onChange={onChangeCat} required /> */}
                                 <div className="form-group">
                                     <label>Enter Images Catagory</label>
                                     <input type="text" className="form-control" placeholder="Enter Images Catagory" value={catagory} onChange={onChangeCat} />
@@ -90,9 +87,9 @@ function NavSearch(props) {
                             <div className="contact-info">
                                 <center>
                                     <h3>Search Images Here</h3>
-                                    
+
                                 </center>
-                                <img src={img} alt="No img" />
+                                <img className="img-fluid" src={img} alt="No img" />
 
                             </div>
                         </Col>
@@ -107,4 +104,4 @@ function NavSearch(props) {
         </>
     )
 }
-export default NavSearch;
+export default ImgSearch;
