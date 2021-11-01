@@ -58,7 +58,7 @@ function Homecro() {
 
 
             <ReactBootStrap.Carousel>
-                <ReactBootStrap.Carousel.Item interval={500}>
+                <ReactBootStrap.Carousel.Item interval={1100}>
 
                     <ReactBootStrap.Carousel.Caption style={{ marginBottom: '640px', color: 'red' }}>
                         <h1>Top Technology Idea  </h1>
@@ -112,13 +112,13 @@ function Homecro() {
                         </ReactBootStrap.Col>
                     </ReactBootStrap.Row>
                 </ReactBootStrap.Carousel.Item>
-                <ReactBootStrap.Carousel.Item interval={500}>
+                <ReactBootStrap.Carousel.Item interval={1100}>
 
                     <ReactBootStrap.Carousel.Caption style={{ marginBottom: '640px', color: 'green' }}>
                         <h1>Top Business Idea   </h1>
 
                         <DownButton id="down" className="open-btn">
-                            <IconButton style={{ color: 'red' }}>
+                            <IconButton style={{ color: 'green' }}>
                                 <ExpandMoreRoundedIcon />
                             </IconButton>
                         </DownButton>
@@ -166,7 +166,7 @@ function Homecro() {
                         </ReactBootStrap.Col>
                     </ReactBootStrap.Row>
                 </ReactBootStrap.Carousel.Item>
-                <ReactBootStrap.Carousel.Item interval={500}>
+                <ReactBootStrap.Carousel.Item interval={1100}>
 
                     <ReactBootStrap.Carousel.Caption style={{ marginBottom: '640px', color: 'red' }}>
                         <h1>Garden Decoration Idea  </h1>
