@@ -52,7 +52,7 @@ function Home(props) {
 
         <center>
           <Box sx={{ overflowY: 'scroll' }}>
-            <ImageList className='img-col' variant="masonry" cols={windowSize > 1200 ? 5 : windowSize > 910 ? 3 : windowSize > 760 ? 3 : windowSize > 570 ? 2 : 1} gap={12}>
+            <ImageList className='img-col' variant="masonry" cols={windowSize > 1020 ? 5 : windowSize > 910 ? 3 : windowSize > 760 ? 3 : windowSize > 570 ? 2 : 1} gap={12}>
               {itemImgslist.map((item) => (
                 <ImageListItem key={item.img_path}>
                   <img className='uimg'
