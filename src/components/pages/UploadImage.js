@@ -8,6 +8,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import img from "./img/test02.png";
 
 
+
 function UploadImage() {
     let authuser = sessionStorage.getItem('user');
     let name = sessionStorage.getItem('name');
@@ -44,45 +45,47 @@ function UploadImage() {
             if (img.size > 1024 * 1024 * 10) return alert("Size too large!")
             if (img.type !== 'image/jpeg' && img.type !== 'image/png') return alert("File format is incorrect.")
 
+            setImg_path(img)
+        }
+
+        const handleSubmit = (evt) => {
+            evt.preventDefault();
             let data = new FormData()
-            data.append('file', img)
+            data.append('file', img_path)
             data.append('upload_preset', "ImgFolder")
             data.append('cloud_name', "jahuruddin007")
             fetch('https://api.cloudinary.com/v1_1/jahuruddin007/image/upload', {
                 method: "post",
                 body: data
             })
+
                 .then(res => res.json())
-                .then(data => {
-                    setImg_path(data.url)
-                    console.log(data)
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        }
+                    .then(data => {
+                        console.log(data.url)
+                        const images = {
 
-
-        const handleSubmit = (evt) => {
-            evt.preventDefault();
-            const images = {
-                title: title,
-                catagory: catagory,
-                descrip: descrip,
-                img_path: img_path,
-                authorid: uid,
-                authorname: name,
-                authoremail: authuser,
-            }
-
-            axios.post('https://pinterestbackendgmit.herokuapp.com/user/upload', images)
-            .then(res => {
-                console.log(res.data);
-                setMessage("Image Added Successfully!!");
-            })
-            .catch(err => {
-                console.log(err);
-            })
+                            title: title,
+                            catagory: catagory,
+                            descrip: descrip,
+                            img_path: data.url,
+                            authorid: uid,
+                            authorname: name,
+                            authoremail: authuser,
+                        }
+            
+                        axios.post('https://pinterestbackendgmit.herokuapp.com/user/upload', images)
+                        .then(res => {
+                            console.log(res.data);
+                            setMessage("Image Added Successfully!!");
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            
 
         setTitle("");
         setDescrip("");

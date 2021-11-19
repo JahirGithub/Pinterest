@@ -24,16 +24,23 @@ function UserRegistration() {
     const onChangeUserGender = (e) => setUserGender(e.target.value);
     const onChangeUserPass = (e) => setUserPass(e.target.value);
 
+
+
     const handleImage = async e => {
         e.preventDefault()
         let img = e.target.files[0]
         if (!img) return alert("File not exist.")
-        //5242880 == 5 mb
         if (img.size > 1024 * 1024 * 10) return alert("Size too large!")
         if (img.type !== 'image/jpeg' && img.type !== 'image/png') return alert("File format is incorrect.")
 
+        setImg_path(img)
+    }
+
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
         let data = new FormData()
-        data.append('file', img)
+        data.append('file', img_path)
         data.append('upload_preset', "ImgFolder")
         data.append('cloud_name', "jahuruddin007")
         fetch('https://api.cloudinary.com/v1_1/jahuruddin007/image/upload', {
@@ -42,36 +49,30 @@ function UserRegistration() {
         })
             .then(res => res.json())
             .then(data => {
-                setImg_path(data.url)
-                console.log(data)
+                console.log(data.url)
+                const userinfo = {
+                    uname: uname,
+                    uemail: uemail,
+                    umobile: umobile,
+                    img_path: data.url,
+                    udob: udob,
+                    ugender: ugender,
+                    upass: upass,
+                }
+
+                axios.post('https://pinterestbackendgmit.herokuapp.com/user/register', userinfo)
+                .then(res => {
+                    console.log(res.data)
+                    setMessage("Registration Successfull and mail send to your email id!")
+                })
+                .catch(err => {
+                    console.log(err);
+                })
             })
             .catch(err => {
                 console.log(err)
             })
-    }
 
-   
-    const handleSubmit = (evt) => {
-        evt.preventDefault();
-        const userinfo = {
-            uname: uname,
-            uemail: uemail,
-            umobile: umobile,
-            img_path: img_path,
-            udob: udob,
-            ugender: ugender,
-            upass: upass,
-        }
-
-        axios.post('http://localhost:4500/user/register', userinfo)
-            .then(res => {
-                console.log(res.data)
-                // setMessage('REGISTRATION SUCCESSFUL')
-                setMessage(res.data.message)
-            })
-            .catch(err => {
-                console.log(err);
-            })
 
         setUserName('')
         setUserEmail('')
@@ -80,7 +81,59 @@ function UserRegistration() {
         setUserDOB('')
         setUserGender('')
         setUserPass('')
+
     }
+
+
+    // const handleImage = async e => {
+    //     e.preventDefault()
+    //     let img = e.target.files[0]
+    //     if (!img) return alert("File not exist.")
+    //     if (img.size > 1024 * 1024 * 10) return alert("Size too large!")
+    //     if (img.type !== 'image/jpeg' && img.type !== 'image/png') return alert("File format is incorrect.")
+
+    //     let data = new FormData()
+    //     data.append('file', img)
+    //     data.append('upload_preset', "ImgFolder")
+    //     data.append('cloud_name', "jahuruddin007")
+    //     fetch('https://api.cloudinary.com/v1_1/jahuruddin007/image/upload', {
+    //         method: "post",
+    //         body: data
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setImg_path(data.url)
+    //             console.log(data)
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    // }
+
+
+    // const handleSubmit = (evt) => {
+    //     evt.preventDefault();
+    //     const userinfo = {
+    //         uname: uname,
+    //         uemail: uemail,
+    //         umobile: umobile,
+    //         img_path: img_path,
+    //         udob: udob,
+    //         ugender: ugender,
+    //         upass: upass,
+    //     }
+
+    //     axios.post('http://localhost:4500/user/register', userinfo)
+            // .then(res => {
+            //     console.log(res.data)
+            //     setMessage(res.data.message)
+            // })
+            // .catch(err => {
+            //     console.log(err);
+            // })
+
+
+    // }
 
     return (
         <>
@@ -88,7 +141,7 @@ function UserRegistration() {
                 <NavigationBar />
                 <Container>
                     <Row>
-                        <Col md={6}> 
+                        <Col md={6}>
                             <br /><br /><br /><br /><br /><br />
                             <div className="contact-info">
                                 <center>
@@ -154,7 +207,7 @@ function UserRegistration() {
                     </Row>
                 </Container>
                 <br /><br /><br />
-                
+
             </div>
         </>
     );

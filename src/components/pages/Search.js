@@ -28,7 +28,7 @@ function Search() {
     })
     .catch(err => {
       console.log(err)
-      setMessage('INVALID EMAIL ID')
+      setMessage('Invalid Email Id')
     })
 
   setEmpEmail('')

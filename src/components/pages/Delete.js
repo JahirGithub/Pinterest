@@ -22,11 +22,11 @@ function Delete() {
     axios.delete('https://pinterestbackendgmit.herokuapp.com/admin/remove/' + eemail)
     .then(res => {
       console.log(res.data)
-      setMessage('USER SUCCESSFULLY DELETED')
+      setMessage('User Successfully Deleted')
     })
     .catch(err => {
       console.log(err)
-      setMessage('INVALID EMAIL ID')
+      setMessage('Invalid Email Id')
     })
 
   setEmpEmail('')
